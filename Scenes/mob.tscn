@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dd1gx80t5pxla"]
+[gd_scene load_steps=9 format=3 uid="uid://dd1gx80t5pxla"]
 
 [ext_resource type="Texture2D" uid="uid://dmcsklpgnf61y" path="res://Assets/Art/EnemyFlyingAlt_1.png" id="1_gb57o"]
 [ext_resource type="Texture2D" uid="uid://bbcyiehe3jsta" path="res://Assets/Art/EnemyFlyingAlt_2.png" id="2_keml4"]
@@ -40,17 +40,24 @@ animations = [{
 }],
 "loop": true,
 "name": &"Walk",
-"speed": 5.0
+"speed": 3.0
 }]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5hlus"]
+radius = 36.0
+height = 102.0
 
 [node name="Mob" type="RigidBody2D"]
 collision_mask = 0
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.75, 0.75)
 sprite_frames = SubResource("SpriteFrames_2f4fg")
-animation = &"Walk"
+animation = &"Swim"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_5hlus")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
