@@ -20,5 +20,29 @@ public static class AnimationConstants
         /// Reference to the player<c>Up</c>animation name
         /// </summary>
         public const string UP = "Up";
-    }    
+    }
+
+
+    /// <summary>
+    /// Contains animation names for the mob enemy
+    /// </summary>
+    public class Mob
+    {
+        /// <summary>
+        /// Reference to the mob<c>Fly</c>animation name
+        /// </summary>
+        public const string FLY = "Fly";
+
+
+        /// <summary>
+        /// Reference to the mob<c>Swim</c>animation name
+        /// </summary>
+        public const string SWIM = "Swim";
+
+
+        /// <summary>
+        /// Reference to the mob<c>Walk</c>animation name
+        /// </summary>
+        public const string WALK = "Walk";
+    }
 }
