@@ -25,7 +25,8 @@ public partial class Player : Area2D
 	public override void _Ready()
     {
 		// Hide the player when the game starts
-		Hide();
+		// Hide();
+		
 		BodyEntered += OnBodyEntered;
 
 		_animeSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");

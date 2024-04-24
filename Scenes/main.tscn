@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://82xnonaftx5n"]
+[gd_scene load_steps=2 format=3 uid="uid://82xnonaftx5n"]
+
+[ext_resource type="PackedScene" uid="uid://pggnlwqkmqqy" path="res://Scenes/player.tscn" id="1_r85fe"]
 
 [node name="Main" type="Node"]
 
@@ -13,3 +15,6 @@ one_shot = true
 
 [node name="StartPosition" type="Marker2D" parent="."]
 position = Vector2(240, 450)
+
+[node name="Player" parent="." instance=ExtResource("1_r85fe")]
+position = Vector2(236, 450)
