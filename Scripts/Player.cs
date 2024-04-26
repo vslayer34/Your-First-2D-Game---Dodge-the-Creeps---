@@ -112,7 +112,7 @@ public partial class Player : Area2D
 	/// <summary>
 	/// Reset the player position and collision at the start of a new game
 	/// </summary>
-	private void ResetPlayer(Vector2 position)
+	public void ResetPlayer(Vector2 position)
 	{
 		Position = position;
 		Show();
