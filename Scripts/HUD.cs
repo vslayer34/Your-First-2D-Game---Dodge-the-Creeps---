@@ -9,6 +9,7 @@ public partial class HUD : CanvasLayer
     /// </summary>
     public delegate void StartGameEventHandler();
 
+    private Label _scoreLabel;
     private Label _message;
     private Button _startButton;
     private Timer _messageTimer;
@@ -17,9 +18,13 @@ public partial class HUD : CanvasLayer
 
     public override void _Ready()
     {
+        _scoreLabel = GetNode<Label>("ScoreLabel");
         _message = GetNode<Label>("Message");
         _messageTimer = GetNode<Timer>("MessageTimer");
         _startButton = GetNode<Button>("StartButton");
+
+        _startButton.Pressed += OnStartButtonPressed;
+        _messageTimer.Timeout += OnMessageTimerTimeout;
     }
 
 
@@ -53,5 +58,33 @@ public partial class HUD : CanvasLayer
         // Make a short timer and wait for it to finish
         await ToSignal(GetTree().CreateTimer(1.0f), Timer.SignalName.Timeout);
         _startButton.Show();
+    }
+
+    
+    /// <summary>
+    /// Update the score prompt
+    /// </summary>
+    private void UpdateScore(int score)
+    {
+        _scoreLabel.Text = score.ToString();
+    }
+
+
+    /// <summary>
+    /// Hide the button and invoke StartGame Signal
+    /// </summary>
+    private void OnStartButtonPressed()
+    {
+        _startButton.Hide();
+        EmitSignal(SignalName.StartGame);
+    }
+
+
+    /// <summary>
+    /// Hide the message label
+    /// </summary>
+    private void OnMessageTimerTimeout()
+    {
+        _message.Hide();
     }
 }
