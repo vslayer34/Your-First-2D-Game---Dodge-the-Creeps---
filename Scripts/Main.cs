@@ -26,13 +26,15 @@ public partial class Main : Node
         _mobTimer = GetNode<Timer>("MobTimer");
         _startTimer = GetNode<Timer>("StartTimer");
 
+        _startPosition = GetNode<Marker2D>("StartPosition");
+
         _player.Hit += SetGameOver;
         
         _scoreTimer.Timeout += OnScoreTimerTimeOut;
         _startTimer.Timeout += OnStartTimerTimeOut;
         _mobTimer.Timeout += OnMobTimerTimeOut;
 
-        _startPosition = GetNode<Marker2D>("StartPosition");
+        StartNewGame();
     }
 
 

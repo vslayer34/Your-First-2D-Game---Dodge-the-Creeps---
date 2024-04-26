@@ -10,9 +10,10 @@ _data = {
 }
 point_count = 5
 
-[node name="Main" type="Node"]
+[node name="Main" type="Node" node_paths=PackedStringArray("_player")]
 script = ExtResource("1_064g7")
 MobScene = ExtResource("2_mhuwa")
+_player = NodePath("Player")
 
 [node name="MobTimer" type="Timer" parent="."]
 wait_time = 0.5
