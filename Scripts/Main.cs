@@ -19,6 +19,9 @@ public partial class Main : Node
 
     private Marker2D _startPosition;
 
+    private AudioStreamPlayer _musicPlayer;
+    private AudioStreamPlayer _DeathSoundPlayer;
+
     private int _score;
 
 
@@ -31,6 +34,9 @@ public partial class Main : Node
         _startTimer = GetNode<Timer>("StartTimer");
 
         _startPosition = GetNode<Marker2D>("StartPosition");
+
+        _musicPlayer = GetNode<AudioStreamPlayer>("Music");
+        _DeathSoundPlayer = GetNode<AudioStreamPlayer>("DeathSound");
 
         _player.Hit += SetGameOver;
         
@@ -47,6 +53,9 @@ public partial class Main : Node
     /// </summary>
     private void SetGameOver()
     {
+        _musicPlayer.Stop();
+        _DeathSoundPlayer.Play();
+        
         _scoreTimer.Stop();
         _mobTimer.Stop();
 
@@ -58,6 +67,11 @@ public partial class Main : Node
     /// </summary>
     private void StartNewGame()
     {
+        // Remove all the mobs from the previouse scene
+        GetTree().CallGroup("mobs", MethodName.QueueFree);
+
+        _musicPlayer.Play();
+
         _score = 0;
         _player.ResetPlayer(_startPosition.Position);
         _startTimer.Start();
