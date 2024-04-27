@@ -5,6 +5,10 @@ public partial class Main : Node
 {
     [Export]
     public PackedScene MobScene { get; private set; }
+
+    [Export]
+    public HUD HUDScene { get; private set; }
+
     [Export]
     private Player _player;
 
@@ -34,7 +38,7 @@ public partial class Main : Node
         _startTimer.Timeout += OnStartTimerTimeOut;
         _mobTimer.Timeout += OnMobTimerTimeOut;
 
-        StartNewGame();
+        HUDScene.StartGame += StartNewGame;
     }
 
 
@@ -45,6 +49,8 @@ public partial class Main : Node
     {
         _scoreTimer.Stop();
         _mobTimer.Stop();
+
+        HUDScene?.ShowGameOver();
     }
 
     /// <summary>
@@ -55,12 +61,15 @@ public partial class Main : Node
         _score = 0;
         _player.ResetPlayer(_startPosition.Position);
         _startTimer.Start();
+
+        HUDScene?.UpdateScore(_score);
+        HUDScene?.ShowMessage("Get Ready");
     }
 
     /// <summary>
-    /// Increase the score by 1
+    /// Increase the score by 1 and update the UI
     /// </summary>
-    private void OnScoreTimerTimeOut() => _score++;
+    private void OnScoreTimerTimeOut() => HUDScene?.UpdateScore(++_score);
 
     /// <summary>
     /// Start the mob and score timers

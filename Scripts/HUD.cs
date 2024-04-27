@@ -32,7 +32,7 @@ public partial class HUD : CanvasLayer
     /// Set the message label with<c>text</c>and start the timer
     /// </summary>
     /// <param name="text">The message to be displayed on the label text</param>
-    private void ShowMessage(string text)
+    public void ShowMessage(string text)
     {
         _message.Text = text;
         _message.Show();
@@ -45,7 +45,7 @@ public partial class HUD : CanvasLayer
     /// Show the game over message for 2 seconds <br\>
     /// Return to title screen and after a brief show the Start game button
     /// </summary>
-    private async void ShowGameOver()
+    public async void ShowGameOver()
     {
         ShowMessage("Game Over");
 
@@ -64,7 +64,7 @@ public partial class HUD : CanvasLayer
     /// <summary>
     /// Update the score prompt
     /// </summary>
-    private void UpdateScore(int score)
+    public void UpdateScore(int score)
     {
         _scoreLabel.Text = score.ToString();
     }
